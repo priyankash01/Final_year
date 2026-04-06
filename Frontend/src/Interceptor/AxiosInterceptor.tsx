@@ -6,10 +6,6 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
         if (config.headers) {
-
-      // ✅ secret key (always)
-      config.headers["X-Secret-Key"] = "SECRET";
-
       // ✅ token (agar ho)
       const token = localStorage.getItem("token");
       if (token) {
