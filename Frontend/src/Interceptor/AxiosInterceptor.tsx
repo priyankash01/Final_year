@@ -5,12 +5,21 @@ const axiosInstance = axios.create({
 })
 axiosInstance.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
-        const token = localStorage.getItem('token');
-        if (token && config.headers) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
+        if (config.headers) {
+
+      // ✅ secret key (always)
+      config.headers["X-Secret-Key"] = "SECRET";
+
+      // ✅ token (agar ho)
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+    
         return config;
     }
+
 )
 
 export default axiosInstance;
