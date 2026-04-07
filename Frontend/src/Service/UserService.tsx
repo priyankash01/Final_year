@@ -1,5 +1,7 @@
 
 import axiosInstance from "../Interceptor/AxiosInterceptor";
+const USERMS_BASE = "https://userms-qa11.onrender.com";
+
 
 const registerUser = async (user: any) => {
     return axiosInstance.post('/user/register', user)
